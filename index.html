@@ -47,8 +47,7 @@
     class="bg-matcha-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200 transition"
   >
     <header
-      id="navbar"
-      class="fixed w-full z-50 bg-white/70 dark:bg-gray-900/70 backdrop-blur"
+      class="fixed top-0 w-full z-50 bg-white/70 dark:bg-gray-900/70 backdrop-blur"
     >
       <nav
         class="max-w-6xl mx-auto px-4 flex justify-between items-center h-20"
@@ -57,18 +56,77 @@
           Arip
         </h1>
 
-        <button id="menuBtn" class="md:hidden text-2xl">☰</button>
+        <!-- Desktop Menu -->
+        <div class="hidden md:flex items-center gap-8">
+          <a href="#home">Home</a>
+          <a href="#about">About</a>
+          <a href="#projects">Projects</a>
+          <a href="#contact">Contact</a>
+
+          <!-- Theme Toggle Desktop -->
+          <label class="relative inline-flex items-center cursor-pointer">
+            <input
+              id="themeToggle"
+              type="checkbox"
+              class="sr-only peer"
+              aria-label="Toggle dark mode"
+            />
+
+            <div
+              class="w-11 h-6 bg-matcha-300 rounded-full peer-checked:bg-matcha-600 transition"
+            ></div>
+
+            <div
+              class="absolute left-1 top-1 w-4 h-4 bg-white rounded-full transition peer-checked:translate-x-5"
+            ></div>
+          </label>
+        </div>
+
+        <!-- Hamburger -->
+        <button
+          title="btn"
+          id="menuBtn"
+          class="md:hidden relative w-8 h-8 flex flex-col justify-center items-center gap-1"
+        >
+          <span
+            class="line w-6 h-0.5 bg-gray-800 dark:bg-white transition"
+          ></span>
+          <span
+            class="line w-6 h-0.5 bg-gray-800 dark:bg-white transition"
+          ></span>
+          <span
+            class="line w-6 h-0.5 bg-gray-800 dark:bg-white transition"
+          ></span>
+        </button>
       </nav>
     </header>
 
     <div
       id="mobileMenu"
-      class="fixed top-20 left-0 w-full bg-white dark:bg-gray-900 px-4 py-6 space-y-4 z-40 shadow-xl transition-all duration-300 opacity-0 -translate-y-5 pointer-events-none"
+      class="md:hidden fixed top-0 left-0 w-full bg-white/90 dark:bg-gray-900/90 backdrop-blur-lg px-6 pt-28 pb-10 space-y-6 shadow-xl transform -translate-y-full transition duration-300 z-40"
     >
-      <a href="#home" class="block">Home</a>
-      <a href="#about" class="block">About</a>
-      <a href="#projects" class="block">Projects</a>
-      <a href="#contact" class="block">Contact</a>
+      <a href="#home" class="mobile-link block text-lg">Home</a>
+      <a href="#about" class="mobile-link block text-lg">About</a>
+      <a href="#projects" class="mobile-link block text-lg">Projects</a>
+      <a href="#contact" class="mobile-link block text-lg">Contact</a>
+
+      <!-- Theme Toggle Mobile -->
+      <label class="relative inline-flex items-center cursor-pointer mt-4">
+        <input
+          id="themeToggleMobile"
+          type="checkbox"
+          class="sr-only peer"
+          aria-label="Toggle dark mode"
+        />
+
+        <div
+          class="w-11 h-6 bg-matcha-300 rounded-full peer-checked:bg-matcha-600 transition"
+        ></div>
+
+        <div
+          class="absolute left-1 top-1 w-4 h-4 bg-white rounded-full transition peer-checked:translate-x-5"
+        ></div>
+      </label>
     </div>
 
     <!-- HERO -->
@@ -334,43 +392,45 @@
     <script>
       const html = document.documentElement;
 
+      const toggle = document.getElementById("themeToggle");
+      const toggleMobile = document.getElementById("themeToggleMobile");
+
+      function setTheme(isDark) {
+        if (isDark) {
+          html.classList.add("dark");
+          localStorage.setItem("theme", "dark");
+        } else {
+          html.classList.remove("dark");
+          localStorage.setItem("theme", "light");
+        }
+
+        if (toggle) toggle.checked = isDark;
+        if (toggleMobile) toggleMobile.checked = isDark;
+      }
+
+      setTheme(localStorage.getItem("theme") === "dark");
+
+      toggle?.addEventListener("change", () => setTheme(toggle.checked));
+      toggleMobile?.addEventListener("change", () =>
+        setTheme(toggleMobile.checked),
+      );
+
+      /* HAMBURGER */
       const menuBtn = document.getElementById("menuBtn");
       const mobileMenu = document.getElementById("mobileMenu");
-
-      let isOpen = false;
-
-      function openMenu() {
-        mobileMenu.classList.remove(
-          "opacity-0",
-          "-translate-y-5",
-          "pointer-events-none",
-        );
-        isOpen = true;
-      }
-
-      function closeMenu() {
-        mobileMenu.classList.add(
-          "opacity-0",
-          "-translate-y-5",
-          "pointer-events-none",
-        );
-        isOpen = false;
-      }
+      const mobileLinks = document.querySelectorAll(".mobile-link");
 
       menuBtn.addEventListener("click", () => {
-        isOpen ? closeMenu() : openMenu();
+        menuBtn.classList.toggle("active");
+        mobileMenu.classList.toggle("-translate-y-full");
       });
 
-      /* klik link auto close */
-      document.querySelectorAll("#mobileMenu a").forEach((link) => {
-        link.addEventListener("click", closeMenu);
-      });
-
-      /* klik luar auto close */
-      document.addEventListener("click", (e) => {
-        if (!mobileMenu.contains(e.target) && !menuBtn.contains(e.target)) {
-          closeMenu();
-        }
+      /* Auto close kalau klik menu */
+      mobileLinks.forEach((link) => {
+        link.addEventListener("click", () => {
+          mobileMenu.classList.add("-translate-y-full");
+          menuBtn.classList.remove("active");
+        });
       });
     </script>
   </body>

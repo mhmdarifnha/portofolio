@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Arip</title>
+    <title>Arip | Portfolio</title>
 
     <link
       rel="shortcut icon"
@@ -46,75 +46,30 @@
   <body
     class="bg-matcha-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200 transition"
   >
-    <!-- NAVBAR -->
     <header
       id="navbar"
-      class="fixed w-full z-50 transition-all duration-300 bg-white/70 dark:bg-gray-900/70 backdrop-blur"
+      class="fixed w-full z-50 bg-white/70 dark:bg-gray-900/70 backdrop-blur"
     >
       <nav
-        class="max-w-6xl mx-auto px-4 flex justify-between items-center h-20 transition-all duration-300"
+        class="max-w-6xl mx-auto px-4 flex justify-between items-center h-20"
       >
         <h1 class="font-bold text-lg text-matcha-700 dark:text-matcha-300">
           Arip
         </h1>
 
-        <!-- Desktop Menu -->
-        <div class="hidden md:flex items-center gap-6">
-          <a href="#home" class="hover:text-matcha-500">Home</a>
-          <a href="#about" class="hover:text-matcha-500">About</a>
-          <a href="#projects" class="hover:text-matcha-500">Projects</a>
-          <a href="#contact" class="hover:text-matcha-500">Contact</a>
-
-          <label class="relative inline-flex items-center cursor-pointer">
-            <input
-              type="checkbox"
-              id="themeToggle"
-              class="sr-only peer"
-              aria-label="Toggle dark mode"
-            />
-
-            <div
-              class="w-11 h-6 bg-matcha-300 peer-focus:outline-none rounded-full peer dark:bg-matcha-700 peer-checked:bg-matcha-600 transition"
-            ></div>
-
-            <div
-              class="absolute left-1 top-1 bg-white w-4 h-4 rounded-full transition peer-checked:translate-x-5"
-            ></div>
-          </label>
-        </div>
-
-        <!-- Hamburger -->
         <button id="menuBtn" class="md:hidden text-2xl">☰</button>
       </nav>
-
-      <!-- Mobile Menu -->
-      <div
-        id="mobileMenu"
-        class="hidden md:hidden px-4 pb-4 space-y-3 bg-white dark:bg-gray-900"
-      >
-        <a href="#home" class="block">Home</a>
-        <a href="#about" class="block">About</a>
-        <a href="#projects" class="block">Projects</a>
-        <a href="#contact" class="block">Contact</a>
-
-        <label class="relative inline-flex items-center cursor-pointer">
-          <input
-            type="checkbox"
-            id="themeToggleMobile"
-            class="sr-only peer"
-            aria-label="Toggle dark mode (mobile)"
-          />
-
-          <div
-            class="w-11 h-6 bg-matcha-300 rounded-full peer dark:bg-matcha-700 peer-checked:bg-matcha-600 transition"
-          ></div>
-
-          <div
-            class="absolute left-1 top-1 bg-white w-4 h-4 rounded-full transition peer-checked:translate-x-5"
-          ></div>
-        </label>
-      </div>
     </header>
+
+    <div
+      id="mobileMenu"
+      class="fixed top-20 left-0 w-full bg-white dark:bg-gray-900 px-4 py-6 space-y-4 z-40 shadow-xl transition-all duration-300 opacity-0 -translate-y-5 pointer-events-none"
+    >
+      <a href="#home" class="block">Home</a>
+      <a href="#about" class="block">About</a>
+      <a href="#projects" class="block">Projects</a>
+      <a href="#contact" class="block">Contact</a>
+    </div>
 
     <!-- HERO -->
     <section id="home" class="min-h-screen flex items-center pt-24">
@@ -378,36 +333,44 @@
 
     <script>
       const html = document.documentElement;
-      const toggle = document.getElementById("themeToggle");
-      const toggleMobile = document.getElementById("themeToggleMobile");
 
-      function setTheme(isDark) {
-        if (isDark) {
-          html.classList.add("dark");
-          localStorage.setItem("theme", "dark");
-          toggle.checked = true;
-          toggleMobile.checked = true;
-        } else {
-          html.classList.remove("dark");
-          localStorage.setItem("theme", "light");
-          toggle.checked = false;
-          toggleMobile.checked = false;
-        }
-      }
-
-      setTheme(localStorage.getItem("theme") === "dark");
-
-      toggle.addEventListener("change", () => setTheme(toggle.checked));
-      toggleMobile.addEventListener("change", () =>
-        setTheme(toggleMobile.checked),
-      );
-
-      /* Hamburger */
       const menuBtn = document.getElementById("menuBtn");
       const mobileMenu = document.getElementById("mobileMenu");
 
+      let isOpen = false;
+
+      function openMenu() {
+        mobileMenu.classList.remove(
+          "opacity-0",
+          "-translate-y-5",
+          "pointer-events-none",
+        );
+        isOpen = true;
+      }
+
+      function closeMenu() {
+        mobileMenu.classList.add(
+          "opacity-0",
+          "-translate-y-5",
+          "pointer-events-none",
+        );
+        isOpen = false;
+      }
+
       menuBtn.addEventListener("click", () => {
-        mobileMenu.classList.toggle("hidden");
+        isOpen ? closeMenu() : openMenu();
+      });
+
+      /* klik link auto close */
+      document.querySelectorAll("#mobileMenu a").forEach((link) => {
+        link.addEventListener("click", closeMenu);
+      });
+
+      /* klik luar auto close */
+      document.addEventListener("click", (e) => {
+        if (!mobileMenu.contains(e.target) && !menuBtn.contains(e.target)) {
+          closeMenu();
+        }
       });
     </script>
   </body>

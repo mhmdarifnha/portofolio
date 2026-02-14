@@ -18,7 +18,29 @@
 
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <script src="/assets/js/tailwind_colors.js"></script>
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              matcha: {
+                50: "#f3f7f3",
+                100: "#e2efe3",
+                200: "#c6dfc8",
+                300: "#a3c9a6",
+                400: "#7caf82",
+                500: "#5f9666",
+                600: "#4a7850",
+                700: "#3c6041",
+                800: "#324e36",
+                900: "#2a412d",
+              },
+            },
+          },
+        },
+      };
+    </script>
   </head>
 
   <body
@@ -160,7 +182,7 @@
             <div class="relative">
               <img
                 alt="learn javascript"
-                src="/assets/images/projects/learn-javascript.png"
+                src="https://github.com/mhmdarifnha/portofolio/blob/main/assets/images/projects/learn-javascript.png?raw=true"
                 class="rounded-xl mb-4 h-[180px] w-full object-cover"
               />
 
@@ -191,7 +213,7 @@
             <div class="relative">
               <img
                 alt="survey app"
-                src="/assets/images/projects/mindcare.png"
+                src="https://github.com/mhmdarifnha/portofolio/blob/main/assets/images/projects/mindcare.png?raw=true"
                 class="rounded-xl mb-4 h-[180px] w-full object-cover"
               />
 
@@ -221,7 +243,7 @@
             <div class="relative">
               <img
                 alt="certificate"
-                src="/assets/images/projects/certificate.png"
+                src="https://github.com/mhmdarifnha/portofolio/blob/main/assets/images/projects/certificate.png?raw=true"
                 class="rounded-xl mb-4 h-[180px] w-full object-cover"
               />
 
@@ -354,6 +376,39 @@
       <p class="text-sm">© 2026 Arip Portfolio</p>
     </footer>
 
-    <script src="/assets/js/script.js"></script>
+    <script>
+      const html = document.documentElement;
+      const toggle = document.getElementById("themeToggle");
+      const toggleMobile = document.getElementById("themeToggleMobile");
+
+      function setTheme(isDark) {
+        if (isDark) {
+          html.classList.add("dark");
+          localStorage.setItem("theme", "dark");
+          toggle.checked = true;
+          toggleMobile.checked = true;
+        } else {
+          html.classList.remove("dark");
+          localStorage.setItem("theme", "light");
+          toggle.checked = false;
+          toggleMobile.checked = false;
+        }
+      }
+
+      setTheme(localStorage.getItem("theme") === "dark");
+
+      toggle.addEventListener("change", () => setTheme(toggle.checked));
+      toggleMobile.addEventListener("change", () =>
+        setTheme(toggleMobile.checked),
+      );
+
+      /* Hamburger */
+      const menuBtn = document.getElementById("menuBtn");
+      const mobileMenu = document.getElementById("mobileMenu");
+
+      menuBtn.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+      });
+    </script>
   </body>
 </html>

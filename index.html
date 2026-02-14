@@ -3,7 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Matcha Portfolio</title>
+    <title>Arip</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+      rel="stylesheet"
+    />
 
     <script src="https://cdn.tailwindcss.com"></script>
 
@@ -54,12 +59,17 @@
           <a href="#projects" class="hover:text-matcha-500">Projects</a>
           <a href="#contact" class="hover:text-matcha-500">Contact</a>
 
-          <button
-            id="themeToggle"
-            class="p-2 rounded bg-matcha-200 dark:bg-matcha-700"
-          >
-            🌙
-          </button>
+          <label class="relative inline-flex items-center cursor-pointer">
+            <input type="checkbox" id="themeToggle" class="sr-only peer" />
+
+            <div
+              class="w-11 h-6 bg-matcha-300 peer-focus:outline-none rounded-full peer dark:bg-matcha-700 peer-checked:bg-matcha-600 transition"
+            ></div>
+
+            <div
+              class="absolute left-1 top-1 bg-white w-4 h-4 rounded-full transition peer-checked:translate-x-5"
+            ></div>
+          </label>
         </div>
 
         <!-- Hamburger -->
@@ -76,12 +86,17 @@
         <a href="#projects" class="block">Projects</a>
         <a href="#contact" class="block">Contact</a>
 
-        <button
-          id="themeToggleMobile"
-          class="p-2 rounded bg-matcha-200 dark:bg-matcha-700"
-        >
-          Toggle Theme
-        </button>
+        <label class="relative inline-flex items-center cursor-pointer">
+          <input type="checkbox" id="themeToggleMobile" class="sr-only peer" />
+
+          <div
+            class="w-11 h-6 bg-matcha-300 rounded-full peer dark:bg-matcha-700 peer-checked:bg-matcha-600 transition"
+          ></div>
+
+          <div
+            class="absolute left-1 top-1 bg-white w-4 h-4 rounded-full transition peer-checked:translate-x-5"
+          ></div>
+        </label>
       </div>
     </header>
 
@@ -92,7 +107,12 @@
       >
         <div>
           <h2 class="text-4xl md:text-5xl font-bold mb-4">
-            Hi, Aku <span class="text-matcha-600">Arip</span>
+            Hi, Aku
+            <span
+              class="bg-gradient-to-r from-matcha-500 to-matcha-700 bg-clip-text text-transparent"
+            >
+              Arip
+            </span>
           </h2>
 
           <p class="mb-6 text-gray-600 dark:text-gray-400">Aku suka matcha.</p>
@@ -108,7 +128,7 @@
         <div class="flex justify-center">
           <img
             alt="gambar"
-            src="https://github.com/mhmdarifnha/portofolio/blob/main/assets/images/avatar.jpg?raw=true"
+            src="/assets/images/avatar.jpg"
             class="w-72 rounded-3xl shadow-lg"
           />
         </div>
@@ -120,7 +140,10 @@
       <div class="max-w-5xl mx-auto px-4 text-center">
         <h3 class="text-3xl font-bold mb-6 text-matcha-600">About Me</h3>
         <p class="text-gray-600 dark:text-gray-400">
-          Fokus frontend development. Suka eksplor UI dan pengalaman user.
+          Hai, aku Arip. Aku suka eksplor dunia teknologi. Awalnya sering ngulik
+          frontend development, tapi aku juga tertarik belajar jaringan dan
+          sistem komputer. Aku tipe orang yang suka belajar banyak hal dan
+          senang cari pengalaman baru di bidang IT.
         </p>
       </div>
     </section>
@@ -134,7 +157,7 @@
 
         <div class="grid md:grid-cols-3 gap-8">
           <div
-            class="bg-white dark:bg-gray-900 p-5 rounded-2xl shadow hover:scale-105 transition"
+            class="bg-white dark:bg-gray-900 p-5 rounded-2xl shadow hover:-translate-y-2 hover:shadow-xl transition duration-300"
           >
             <img
               alt="gambar"
@@ -145,7 +168,7 @@
           </div>
 
           <div
-            class="bg-white dark:bg-gray-900 p-5 rounded-2xl shadow hover:scale-105 transition"
+            class="bg-white dark:bg-gray-900 p-5 rounded-2xl shadow hover:-translate-y-2 hover:shadow-xl transition duration-300"
           >
             <img
               alt="gambar"
@@ -156,7 +179,7 @@
           </div>
 
           <div
-            class="bg-white dark:bg-gray-900 p-5 rounded-2xl shadow hover:scale-105 transition"
+            class="bg-white dark:bg-gray-900 p-5 rounded-2xl shadow hover:-translate-y-2 hover:shadow-xl transition duration-300"
           >
             <img
               alt="gambar"
@@ -170,40 +193,108 @@
     </section>
 
     <!-- CONTACT -->
-    <section id="contact" class="py-20">
-      <div class="max-w-xl mx-auto px-4 text-center">
-        <h3 class="text-3xl font-bold mb-6 text-matcha-600">Contact Me</h3>
+    <section id="contact" class="py-28">
+      <div class="max-w-3xl mx-auto px-6 text-center">
+        <h3 class="text-2xl font-semibold mb-14">Connect With Me</h3>
 
-        <form class="space-y-4">
-          <input
-            type="text"
-            placeholder="Nama"
-            class="w-full p-3 rounded-lg border dark:bg-gray-800"
-          />
-
-          <input
-            type="email"
-            placeholder="Email"
-            class="w-full p-3 rounded-lg border dark:bg-gray-800"
-          />
-
-          <textarea
-            placeholder="Pesan"
-            class="w-full p-3 rounded-lg border dark:bg-gray-800"
-          ></textarea>
-
-          <button
-            type="button"
-            class="w-full bg-matcha-500 hover:bg-matcha-600 text-white p-3 rounded-lg"
+        <div class="flex justify-center gap-12 flex-wrap">
+          <!-- Email -->
+          <a
+            href="mailto:muhamadarifulinnuha@gmail.com"
+            target="_blank"
+            class="group flex flex-col items-center transition"
           >
-            Kirim
-          </button>
-        </form>
+            <div
+              class="w-14 h-14 flex items-center justify-center rounded-full border border-gray-300 dark:border-gray-700 group-hover:border-matcha-500 transition duration-300 group-hover:-translate-y-1"
+            >
+              <span
+                class="material-symbols-outlined text-xl text-gray-600 dark:text-gray-300 group-hover:text-matcha-600 transition"
+              >
+                mail
+              </span>
+            </div>
+
+            <span
+              class="text-sm mt-3 text-gray-500 group-hover:text-matcha-600 transition"
+            >
+              Email
+            </span>
+          </a>
+
+          <!-- Github -->
+          <a
+            href="https://github.com/mhmdarifnha"
+            target="_blank"
+            class="group flex flex-col items-center transition"
+          >
+            <div
+              class="w-14 h-14 flex items-center justify-center rounded-full border border-gray-300 dark:border-gray-700 group-hover:border-matcha-500 transition duration-300 group-hover:-translate-y-1"
+            >
+              <span
+                class="material-symbols-outlined text-xl text-gray-600 dark:text-gray-300 group-hover:text-matcha-600 transition"
+              >
+                code
+              </span>
+            </div>
+
+            <span
+              class="text-sm mt-3 text-gray-500 group-hover:text-matcha-600 transition"
+            >
+              Github
+            </span>
+          </a>
+
+          <!-- Instagram -->
+          <a
+            href="https://instagram.com/mhmdarifnha"
+            target="_blank"
+            class="group flex flex-col items-center transition"
+          >
+            <div
+              class="w-14 h-14 flex items-center justify-center rounded-full border border-gray-300 dark:border-gray-700 group-hover:border-matcha-500 transition duration-300 group-hover:-translate-y-1"
+            >
+              <span
+                class="material-symbols-outlined text-xl text-gray-600 dark:text-gray-300 group-hover:text-matcha-600 transition"
+              >
+                photo_camera
+              </span>
+            </div>
+
+            <span
+              class="text-sm mt-3 text-gray-500 group-hover:text-matcha-600 transition"
+            >
+              Instagram
+            </span>
+          </a>
+
+          <!-- LinkedIn -->
+          <a
+            href="https://linkedin.com/in/mhmdarifnha"
+            target="_blank"
+            class="group flex flex-col items-center transition"
+          >
+            <div
+              class="w-14 h-14 flex items-center justify-center rounded-full border border-gray-300 dark:border-gray-700 group-hover:border-matcha-500 transition duration-300 group-hover:-translate-y-1"
+            >
+              <span
+                class="material-symbols-outlined text-xl text-gray-600 dark:text-gray-300 group-hover:text-matcha-600 transition"
+              >
+                work
+              </span>
+            </div>
+
+            <span
+              class="text-sm mt-3 text-gray-500 group-hover:text-matcha-600 transition"
+            >
+              LinkedIn
+            </span>
+          </a>
+        </div>
       </div>
     </section>
 
     <footer class="py-6 text-center bg-matcha-200 dark:bg-gray-800">
-      <p class="text-sm">© 2026 Matcha Portfolio</p>
+      <p class="text-sm">© 2026 Arip Portfolio</p>
     </footer>
 
     <script>
@@ -211,22 +302,26 @@
       const toggle = document.getElementById("themeToggle");
       const toggleMobile = document.getElementById("themeToggleMobile");
 
-      if (localStorage.getItem("theme") === "dark") {
-        html.classList.add("dark");
-      }
-
-      function toggleTheme() {
-        html.classList.toggle("dark");
-
-        if (html.classList.contains("dark")) {
+      function setTheme(isDark) {
+        if (isDark) {
+          html.classList.add("dark");
           localStorage.setItem("theme", "dark");
+          toggle.checked = true;
+          toggleMobile.checked = true;
         } else {
+          html.classList.remove("dark");
           localStorage.setItem("theme", "light");
+          toggle.checked = false;
+          toggleMobile.checked = false;
         }
       }
 
-      toggle.addEventListener("click", toggleTheme);
-      toggleMobile.addEventListener("click", toggleTheme);
+      setTheme(localStorage.getItem("theme") === "dark");
+
+      toggle.addEventListener("change", () => setTheme(toggle.checked));
+      toggleMobile.addEventListener("change", () =>
+        setTheme(toggleMobile.checked),
+      );
 
       /* Hamburger */
       const menuBtn = document.getElementById("menuBtn");

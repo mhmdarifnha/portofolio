@@ -62,11 +62,14 @@ I enjoy exploring frontend development, networking, and system-related technolog
 
 ## 📁 Project Structure
 
-portfolio
+portofolio
 │
 ├── assets
 │ ├── images
-│ └── icons
+│ ├── icons
+│ └── css
+│
+├── js
 │
 ├── index.html
 └── README.md

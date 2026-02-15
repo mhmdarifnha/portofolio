@@ -60,22 +60,6 @@ I enjoy exploring frontend development, networking, and system-related technolog
 
 ---
 
-## 📁 Project Structure
-
-portofolio
-│
-├── assets
-│ ├── images
-│ ├── icons
-│ └── css
-│
-├── js
-│
-├── index.html
-└── README.md
-
----
-
 ## 📌 Projects Highlight
 
 ### 🌱 Learn JavaScript
